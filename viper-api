@@ -28,13 +28,8 @@ from viper.core.ui.commands import Commands
 from viper.core.config import Config
 
 db = Database()
-
 app = application = bottle.default_app()
 
-cfg = Config()
-
-api_host = cfg.api.host
-api_port = cfg.api.port
 
 @route('/test', method='GET')
 def test():
@@ -448,11 +443,24 @@ def upload_temp():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-H', '--host', help='Host to bind the API server on', default='localhost', action='store', required=False)
-    parser.add_argument('-p', '--port', help='Port to bind the API server on', action='store', required=False)
+    parser.add_argument('-H', '--host', help='Host to bind the API server on (default: 127.0.0.1)', action='store', required=False)
+    parser.add_argument('-p', '--port', help='Port to bind the API server on (default: 9090)', action='store', required=False)
+    parser.add_argument('-c', '--config', help='Viper configuration to be used by API server', action='store', required=False)
     args = parser.parse_args()
 
-    #if args.port:
-    #    web_port = args.port
+    # Default values
+    api_host = '127.0.0.1'
+    api_port = '9090'
+
+    if args.config:
+        cfg = Config(args.config)
+        api_host = cfg.api.host
+        api_port = cfg.api.port
+
+    if args.host:
+        api_host = args.host
+
+    if args.port:
+        api_port = args.port
 
     app.run(host=api_host, port=api_port)
