@@ -50,8 +50,8 @@ app = application = bottle.default_app()
 
 cfg = Config()
 
-web_host = cfg.api.host
-web_port = cfg.api.port
+web_host = cfg.web.host
+web_port = cfg.web.port
 cuckoo_api = cfg.cuckoo.cuckoo_host
 cuckoo_web = cfg.cuckoo.cuckoo_web
 
