@@ -10,7 +10,7 @@ import argparse
 import tempfile
 
 # Added to allow zip file uploads
-import shutil 
+import shutil
 import contextlib
 from zipfile import ZipFile
 
@@ -25,12 +25,16 @@ from viper.core.session import __sessions__
 from viper.core.plugins import __modules__
 from viper.core.project import __project__
 from viper.core.ui.commands import Commands
+from viper.core.config import Config
 
 db = Database()
 
 app = application = bottle.default_app()
 
-web_port = 8080
+cfg = Config()
+
+api_host = cfg.api.host
+api_port = cfg.api.port
 
 @route('/test', method='GET')
 def test():
@@ -65,10 +69,10 @@ def add_file():
                         tf_obj=File(os.path.join(root,name))
                         new_path = store_sample(tf_obj)
                         success = False
-                        
+
                         if new_path:
                             success = db.add(obj=tf_obj, tags=tags)
-                       
+
                         if success:
                             stored_files.append({"filename":name,"sha256": tf_obj.sha256, "message": "added"})
                         else:
@@ -434,7 +438,7 @@ def add_notes(action):
     return {'message': 'Unable to complete action'}
 
 # Added to support zip file uploads
-# context manager for file uploader   
+# context manager for file uploader
 @contextlib.contextmanager
 def upload_temp():
     temp_dir = tempfile.mkdtemp()
@@ -448,7 +452,7 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--port', help='Port to bind the API server on', action='store', required=False)
     args = parser.parse_args()
 
-    if args.port:
-        web_port = args.port
+    #if args.port:
+    #    web_port = args.port
 
-    app.run(host=args.host, port=web_port)
+    app.run(host=api_host, port=api_port)
