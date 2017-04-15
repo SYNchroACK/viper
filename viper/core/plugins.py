@@ -20,11 +20,13 @@ def load_modules():
             continue
 
         # Try to import the module, otherwise skip.
-        try:
-            module = __import__(module_name, globals(), locals(), ['dummy'], -1)
-        except ImportError as e:
-            print_warning("Something wrong happened while importing the module {0}: {1}".format(module_name, e))
-            continue
+        #try:
+        #    module = __import__(module_name, globals(), locals(), ['dummy'], -1)
+        #except ImportError as e:
+        #    print_warning("Something wrong happened while importing the module {0}: {1}".format(module_name, e))
+        #    continue
+
+        continue
 
         # Walk through all members of currently imported modules.
         for member_name, member_object in inspect.getmembers(module):

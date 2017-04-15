@@ -170,7 +170,7 @@ cur_page = int(act_page)
         <ul class="pagination">
             
           <li><a href="/project/{{p}}?page={{cur_page-1}}">&laquo;</a></li>
-          % for i in range(num_pages):
+          % for i in range(int(num_pages)):
           <li
           % if act_page: 
           % if i == cur_page: 

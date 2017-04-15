@@ -10,7 +10,7 @@ import shutil
 try:
     from subprocess import getoutput
 except ImportError:
-    from commands import getoutput
+    from subprocess import getoutput
     
 try:
     from scandir import walk
@@ -140,7 +140,7 @@ def print_output(output):
             for row in entry['data']['rows']:
                 return_html += '<tr>'
                 for cell in row:
-                    return_html += u'<td>{0}</td>'.format(cell)
+                    return_html += '<td>{0}</td>'.format(cell)
                 return_html += '</tr>'
             # Close table
             return_html += '</table>'
@@ -159,7 +159,7 @@ def parse_text(module_text):
         if 'Session opened on' in line:
             continue
         # add text the string
-        set_text += u'{0}\n'.format(line)
+        set_text += '{0}\n'.format(line)
     return set_text
 
 def project_list():
@@ -350,7 +350,7 @@ def add_file():
     with upload_temp() as temp_dir:
         for upload in uploads:
             file_path = os.path.join(temp_dir, upload.filename)
-            with open(file_path, 'w') as tmp_file:
+            with open(file_path, 'wb') as tmp_file:
                 tmp_file.write(upload.file.read())
             # Zip Files
             if request.forms.get('compression') == 'zip':
@@ -405,10 +405,10 @@ def add_file():
 
         # Add each file
         for new_file in file_list:
-            print new_file
+            print(new_file)
             obj = File(new_file)
             new_path = store_sample(obj)
-            print new_path
+            print(new_path)
             success = True
             if new_path:
                 # Add file to the database.
@@ -784,7 +784,7 @@ if __name__ == '__main__':
     
     bv = bottle.__version__.split('.')[1]
     if int(bv) < 12:
-        print "Please Upgrade Bottle to the latest version 'sudo pip install --upgrade bottle'"
+        print("Please Upgrade Bottle to the latest version 'sudo pip install --upgrade bottle'")
         sys.exit()
     
     if not os.path.exists('projects'):
