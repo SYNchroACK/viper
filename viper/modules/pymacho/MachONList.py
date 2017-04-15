@@ -50,9 +50,9 @@ class MachONList(object):
             macho_file.write(pack('<I', self.n_value))
 
     def display(self, before=''):
-        print before + green("[+]")+" NList item :"
-        print before + "\t- n_strx : 0x%08x" % self.n_strx
-        print before + "\t- n_type : 0x%02x" % self.n_type
-        print before + "\t- n_sect : 0x%02x" % self.n_sect
-        print before + "\t- n_desc : 0x%04x" % self.n_desc
-        print before + "\t- n_value : 0x%x" % self.n_value
+        print(before + green("[+]")+" NList item :")
+        print(before + "\t- n_strx : 0x%08x" % self.n_strx)
+        print(before + "\t- n_type : 0x%02x" % self.n_type)
+        print(before + "\t- n_sect : 0x%02x" % self.n_sect)
+        print(before + "\t- n_desc : 0x%04x" % self.n_desc)
+        print(before + "\t- n_value : 0x%x" % self.n_value)

@@ -26,7 +26,7 @@
 '''
 
 import sys, re , os, jsbeautifier, traceback
-from PDFUtils import unescapeHTMLEntities, escapeString
+from .PDFUtils import unescapeHTMLEntities, escapeString
 try:
     import PyV8
     
@@ -217,7 +217,7 @@ def searchObfuscatedFunctions(jsCode, function):
            obfuscatedFunctionsInfo += searchObfuscatedFunctions(jsCode, obfuscatedElement)
     return obfuscatedFunctionsInfo
 
-def unescape(escapedBytes, unicode = True):
+def unescape(escapedBytes, str = True):
     '''
         This method unescapes the given string
         
@@ -226,13 +226,13 @@ def unescape(escapedBytes, unicode = True):
     '''
     #TODO: modify to accept a list of escaped strings?
     unescapedBytes = ''
-    if unicode:
+    if str:
         unicodePadding = '\x00'
     else:
         unicodePadding = ''
     try:
-        if escapedBytes.lower().find('%u') != -1 or escapedBytes.lower().find('\u') != -1 or escapedBytes.find('%') != -1:
-            if escapedBytes.lower().find('\u') != -1:
+        if escapedBytes.lower().find('%u') != -1 or escapedBytes.lower().find('\\u') != -1 or escapedBytes.find('%') != -1:
+            if escapedBytes.lower().find('\\u') != -1:
                 splitBytes = escapedBytes.split('\\')
             else:
                 splitBytes = escapedBytes.split('%')

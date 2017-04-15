@@ -55,5 +55,5 @@ class MachORPathCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" LC_RPATH"
-        print before + "\t- path : %s" % repr(self.path)
+        print(before + green("[+]")+" LC_RPATH")
+        print(before + "\t- path : %s" % repr(self.path))

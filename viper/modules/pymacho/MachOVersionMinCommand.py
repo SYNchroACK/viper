@@ -46,6 +46,6 @@ class MachOVersionMinCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" %s" % ("LC_VERSION_MIN_MACOSX" if self.cmd == LC_VERSION_MIN_MACOSX else "LC_VERSION_MIN_IPHONEOS")
-        print before + "\t- version : %s" % int32_to_version(self.version)
-        print before + "\t- sdk : %s" % int32_to_version(self.sdk)
+        print(before + green("[+]")+" %s" % ("LC_VERSION_MIN_MACOSX" if self.cmd == LC_VERSION_MIN_MACOSX else "LC_VERSION_MIN_IPHONEOS"))
+        print(before + "\t- version : %s" % int32_to_version(self.version))
+        print(before + "\t- sdk : %s" % int32_to_version(self.sdk))

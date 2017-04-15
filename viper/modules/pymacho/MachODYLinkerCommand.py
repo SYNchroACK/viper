@@ -59,5 +59,5 @@ class MachODYLinkerCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" %s" % ("LC_DYLD_ENVIRONMENT" if self.cmd == LC_DYLD_ENVIRONMENT else "LC_LOAD_DYLINKER")
-        print before + "\t - path : %s" % self.path
+        print(before + green("[+]")+" %s" % ("LC_DYLD_ENVIRONMENT" if self.cmd == LC_DYLD_ENVIRONMENT else "LC_LOAD_DYLINKER"))
+        print(before + "\t - path : %s" % self.path)

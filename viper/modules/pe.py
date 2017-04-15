@@ -24,7 +24,7 @@ except ImportError:
 
 try:
     from viper.modules.verifysigs.verifysigs import get_auth_data
-    from verifysigs.asn1 import dn
+    from .verifysigs.asn1 import dn
     HAVE_VERIFYSIGS= True
 except ImportError:
     HAVE_VERIFYSIGS = False
@@ -171,7 +171,7 @@ class PE(Module):
 
                 cluster[cur_ep].append([sample.md5, sample.name])
 
-            for cluster_name, cluster_members in cluster.items():
+            for cluster_name, cluster_members in list(cluster.items()):
                 # Skipping clusters with only one entry.
                 if len(cluster_members) == 1:
                     continue
@@ -513,7 +513,7 @@ class PE(Module):
 
                 cluster[cur_imphash].append([sample.md5, sample.name])
 
-            for cluster_name, cluster_members in cluster.items():
+            for cluster_name, cluster_members in list(cluster.items()):
                 # Skipping clusters with only one entry.
                 if len(cluster_members) == 1:
                     continue
@@ -677,7 +677,7 @@ class PE(Module):
                 auth.ValidateHashes(computed_content_hash)
                 auth.ValidateSignatures()
                 auth.ValidateCertChains(time.gmtime())
-            except Exception, e:
+            except Exception as e:
                 self.log('error', "Unable to validate PE certificate: {0}".format(str(e)))
                 return
 
@@ -709,7 +709,7 @@ class PE(Module):
                         time.asctime(time.gmtime(auth.counter_chain_head[1]))))
 
             self.log('info', bold('Certificates:'))
-            for (issuer, serial), cert in auth.certificates.items():
+            for (issuer, serial), cert in list(auth.certificates.items()):
                 self.log('info', 'Issuer: {0}'.format(issuer))
                 self.log('info', 'Serial: {0}'.format(serial))
                 subject = cert[0][0]['subject']
@@ -951,7 +951,7 @@ class PE(Module):
             for sample_name, sample_md5, pe_hash in rows:
                 cluster.setdefault(pe_hash, []).append([sample_name, sample_md5])
 
-            for item in cluster.items():
+            for item in list(cluster.items()):
                 if len(item[1]) > 1:
                     self.log('info', "PEhash cluster {0}:".format(bold(item[0])))
                     self.log('table', dict(header=['Name', 'MD5'], rows=item[1]))

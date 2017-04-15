@@ -44,5 +44,5 @@ class MachOSourceVersionCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" LC_SOURCE_VERSION"
-        print before + "\t- version : %s" % int64_to_version(self.version)
+        print(before + green("[+]")+" LC_SOURCE_VERSION")
+        print(before + "\t- version : %s" % int64_to_version(self.version))

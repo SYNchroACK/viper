@@ -99,16 +99,16 @@ class MachOSegment(object):
         return rflags
 
     def display(self, before=''):
-        print before + green("[+]")+" %s" % self.segname
-        print before + "\t- vmaddr : 0x%x" % self.vmaddr
-        print before + "\t- vmsize : 0x%x" % self.vmsize
-        print before + "\t- fileoff : 0x%x" % self.fileoff
-        print before + "\t- filesize : 0x%x" % self.filesize
-        print before + "\t- maxprot : 0x%x (%s)" % (self.maxprot, display_protection(self.maxprot))
-        print before + "\t- initprot : 0x%x (%s)" % (self.initprot, display_protection(self.initprot))
-        print before + "\t- nsects : %d" % self.nsects
-        print before + "\t- flags : 0x%x - %s" % (self.flags, ", ".join(self.display_flags()))
+        print(before + green("[+]")+" %s" % self.segname)
+        print(before + "\t- vmaddr : 0x%x" % self.vmaddr)
+        print(before + "\t- vmsize : 0x%x" % self.vmsize)
+        print(before + "\t- fileoff : 0x%x" % self.fileoff)
+        print(before + "\t- filesize : 0x%x" % self.filesize)
+        print(before + "\t- maxprot : 0x%x (%s)" % (self.maxprot, display_protection(self.maxprot)))
+        print(before + "\t- initprot : 0x%x (%s)" % (self.initprot, display_protection(self.initprot)))
+        print(before + "\t- nsects : %d" % self.nsects)
+        print(before + "\t- flags : 0x%x - %s" % (self.flags, ", ".join(self.display_flags())))
         if len(self.sections) != 0:
-            print before + "\t[*] Sections (%d) :" % len(self.sections)
+            print(before + "\t[*] Sections (%d) :" % len(self.sections))
             for section in self.sections:
                 section.display(before=before+"\t\t")

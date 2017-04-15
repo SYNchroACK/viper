@@ -78,8 +78,8 @@ class MachOLoadDYLibCommand(MachOLoadCommand):
         else:
             raise Exception('FUUUUUUUUU')
 
-        print before + green("[+]")+" %s" % name
-        print before + "\t- name : %s" % self.name
-        print before + "\t- timestamp : %s" % datetime.fromtimestamp(self.timestamp).strftime('%Y-%m-%d %H:%M:%S')
-        print before + "\t- current_version : %s" % int32_to_version(self.current_version)
-        print before + "\t- compatibility_version : %s" % int32_to_version(self.compatibility_version)
+        print(before + green("[+]")+" %s" % name)
+        print(before + "\t- name : %s" % self.name)
+        print(before + "\t- timestamp : %s" % datetime.fromtimestamp(self.timestamp).strftime('%Y-%m-%d %H:%M:%S'))
+        print(before + "\t- current_version : %s" % int32_to_version(self.current_version))
+        print(before + "\t- compatibility_version : %s" % int32_to_version(self.compatibility_version))

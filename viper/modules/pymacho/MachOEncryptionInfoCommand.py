@@ -47,7 +47,7 @@ class MachOEncryptionInfoCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" LC_ENCRYPTION_INFO"
-        print before + "\t- cryptoff : 0x%x" % self.cryptoff
-        print before + "\t- cryptsize : 0x%x" % self.cryptsize
-        print before + "\t- crypptid : 0x%x" % self.cryptid
+        print((before + green("[+]")+" LC_ENCRYPTION_INFO"))
+        print((before + "\t- cryptoff : 0x%x" % self.cryptoff))
+        print((before + "\t- cryptsize : 0x%x" % self.cryptsize))
+        print((before + "\t- crypptid : 0x%x" % self.cryptid))

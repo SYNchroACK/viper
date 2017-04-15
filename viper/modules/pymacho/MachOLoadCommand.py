@@ -23,4 +23,4 @@ class MachOLoadCommand(object):
     cmd = 0
 
     def display(self, before):
-        print before + "<LoadCommand cmd=0x%x>" % self.cmd
+        print(before + "<LoadCommand cmd=0x%x>" % self.cmd)

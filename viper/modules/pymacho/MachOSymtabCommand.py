@@ -71,11 +71,11 @@ class MachOSymtabCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" LC_SYMTAB"
-        print before + "\t- symoff : 0x%x" % self.symoff
-        print before + "\t- nsyms : %d" % self.nsyms
+        print(before + green("[+]")+" LC_SYMTAB")
+        print(before + "\t- symoff : 0x%x" % self.symoff)
+        print(before + "\t- nsyms : %d" % self.nsyms)
         for sym in self.syms:
             sym.display(before=before+"\t")
-        print before + "\t- stroff : 0x%x" % self.stroff
-        print before + "\t- strsize : %d (0x%x)" % (self.strsize, self.strsize)
-        print before + "\t- strings : "+str(self.strs)
+        print(before + "\t- stroff : 0x%x" % self.stroff)
+        print(before + "\t- strsize : %d (0x%x)" % (self.strsize, self.strsize))
+        print(before + "\t- strings : "+str(self.strs))

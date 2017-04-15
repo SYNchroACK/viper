@@ -46,6 +46,6 @@ class MachOMainCommand(MachOLoadCommand):
         macho_file.seek(after)
 
     def display(self, before=''):
-        print before + green("[+]")+" LC_MAIN"
-        print before + "\t- entryoff : 0x%x" % self.entryoff
-        print before + "\t- stacksize : 0x%x" % self.stacksize
+        print(before + green("[+]")+" LC_MAIN")
+        print(before + "\t- entryoff : 0x%x" % self.entryoff)
+        print(before + "\t- stacksize : 0x%x" % self.stacksize)

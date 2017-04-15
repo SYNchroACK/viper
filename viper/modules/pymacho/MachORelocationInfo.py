@@ -49,4 +49,4 @@ class MachORelocationInfo(object):
         macho_file.write(pack('<II', self.r_address, self.uint32))
 
     def display(self, before):
-        print before + "<MachORelocationInfo>"
+        print(before + "<MachORelocationInfo>")

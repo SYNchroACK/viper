@@ -205,15 +205,15 @@ class MachOSection(object):
         return rflags
 
     def display(self, before=''):
-        print before + green("[+]")+" %s" % self.sectname
-        print before + "\t- addr :0x%x" % self.addr
-        print before + "\t- size : 0x%x" % self.size
-        print before + "\t- offset : 0x%x" % self.offset
-        print before + "\t- align : 0x%x" % self.align
-        print before + "\t- reloff : 0x%x" % self.reloff
-        print before + "\t- nreloc : 0x%x" % self.nreloc
-        print before + "\t- flags : 0x%x - %s" % (self.flags, ", ".join(self.display_flags()))
-        print before + "\t- reserved1 : 0x%x" % self.reserved1
-        print before + "\t- reserved2 : 0x%x" % self.reserved2
+        print(before + green("[+]")+" %s" % self.sectname)
+        print(before + "\t- addr :0x%x" % self.addr)
+        print(before + "\t- size : 0x%x" % self.size)
+        print(before + "\t- offset : 0x%x" % self.offset)
+        print(before + "\t- align : 0x%x" % self.align)
+        print(before + "\t- reloff : 0x%x" % self.reloff)
+        print(before + "\t- nreloc : 0x%x" % self.nreloc)
+        print(before + "\t- flags : 0x%x - %s" % (self.flags, ", ".join(self.display_flags())))
+        print(before + "\t- reserved1 : 0x%x" % self.reserved1)
+        print(before + "\t- reserved2 : 0x%x" % self.reserved2)
         if self.arch != 32:
-            print before + "\t- reserved3 : 0x%x" % self.reserved3
+            print(before + "\t- reserved3 : 0x%x" % self.reserved3)

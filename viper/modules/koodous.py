@@ -157,6 +157,6 @@ class Koodous(Module):
                 self.log('info', 'This sample has no comments.')
                 return
             for result in response.json().get('results'):
-                print "[%s]: %s" % (result['author']['username'], result['text'])
+                print("[%s]: %s" % (result['author']['username'], result['text']))
         except:
             self.log('error', 'Network problem, please try again.')

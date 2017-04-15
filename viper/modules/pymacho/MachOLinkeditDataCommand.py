@@ -66,6 +66,6 @@ class MachOLinkeditDataCommand(MachOLoadCommand):
         else:
             raise Exception('WHAT DA FUCK')
 
-        print before + green("[+]")+" %s" % name
-        print before + "\t- dataoff : 0x%x" % self.dataoff
-        print before + "\t- datasize : 0x%x" % self.datasize
+        print(before + green("[+]")+" %s" % name)
+        print(before + "\t- dataoff : 0x%x" % self.dataoff)
+        print(before + "\t- datasize : 0x%x" % self.datasize)
